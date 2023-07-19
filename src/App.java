@@ -40,30 +40,30 @@ public class App {
         }
     }
 
-    // creating class VehiclesManager to manage all of the maxSpeeds from the other functions
+    // creating class VehiclesManager to manage all of the vehicles classes
     public static class VehiclesManager {
-        private double[] vehicles;
+        private Vehicles[] vehicles;
 
-        public VehiclesManager(double[] vehicles) {
+        public VehiclesManager(Vehicles[] vehicles) {
         this.vehicles = vehicles;
         }
 
         // making a function for highest and smallest speed
         public double highestSpeed() {
-            double highestSpeed = vehicles[0];
+            double highestSpeed = vehicles[0].maxSpeed();
             for (int i = 0; i < vehicles.length; i++) {
-                if (highestSpeed < vehicles[i]) {
-                    highestSpeed = vehicles[i];
+                if (highestSpeed < vehicles[i].maxSpeed()) {
+                    highestSpeed = vehicles[i].maxSpeed();
                 }
             }
             return highestSpeed;
         }
 
         public double smallestSpeed() {
-            double smallestSpeed = vehicles[0];
+            double smallestSpeed = vehicles[0].maxSpeed();
             for (int i = 0; i < vehicles.length; i++) {
-                if (smallestSpeed > vehicles[i]) {
-                    smallestSpeed = vehicles[i];
+                if (smallestSpeed > vehicles[i].maxSpeed()) {
+                    smallestSpeed = vehicles[i].maxSpeed();
                 }
             }
             return smallestSpeed;
@@ -78,8 +78,8 @@ public class App {
         Toyota toyota = new Toyota();
         Airplane airplane = new Airplane(Double.parseDouble(System.console().readLine("enter the airplane max speed: ")));
 
-        // manage all of the classes maxSpeed in the vehiclesManager object
-        VehiclesManager vehiclesManager = new VehiclesManager(new double[]{car.maxSpeed(), toyota.maxSpeed(), airplane.maxSpeed()});
+        // manage all of the classes in the vehiclesManager object
+        VehiclesManager vehiclesManager = new VehiclesManager(new Vehicles[]{car, toyota, airplane});
         
         // prints the highest and smallest speeds
         System.out.println("Highest speed: " + vehiclesManager.highestSpeed());
